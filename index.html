@@ -49,8 +49,8 @@
 </div>
 
 <script>
-    // ضعي الـ API Key الخاص بكِ هنا
-    const API_KEY = "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"; 
+    // ضعي الـ Groq API Key الجديد هنا بين علامتي التنصيص
+    const GROQ_API_KEY = "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"; 
 
     function quickSend(topic) {
         document.getElementById("userInput").value = `حدثني عن ${topic}`;
@@ -79,16 +79,16 @@
         chatBox.scrollTop = chatBox.scrollHeight;
 
         try {
-            const response = await fetch("https://api.openai.com/v1/chat/completions", {
+            const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${API_KEY}`
+                    "Authorization": `Bearer ${GROQ_API_KEY}`
                 },
                 body: JSON.stringify({
-                    model: "gpt-4o-mini",
+                    model: "llama-3.1-8b-instant",
                     messages: [
-                        { role: "system", content: "أنت مساعد ذكي ومحترف لتدريب المهارات." },
+                        { role: "system", content: "أنت مساعد ومربٍّ محترف لتدريب المهارات لمؤسسة iSchool. أجب دائماً باللغة العربية بأسلوب منظم وواضح." },
                         { role: "user", content: text }
                     ]
                 })
@@ -98,10 +98,10 @@
             if (data.choices && data.choices[0]) {
                 botDiv.textContent = data.choices[0].message.content;
             } else {
-                botDiv.textContent = "يرجى التأكد من إضافة الـ API Key الصحيح.";
+                botDiv.textContent = "يرجى التأكد من إدخال Groq API Key الصحيح.";
             }
         } catch (error) {
-            botDiv.textContent = "حدث خطأ في الاتصال.";
+            botDiv.textContent = "حدث خطأ أثناء الاتصال بالخادم.";
         }
         chatBox.scrollTop = chatBox.scrollHeight;
     }
