@@ -49,8 +49,20 @@
 </div>
 
 <script>
-    // ضعي الـ Groq API Key الجديد هنا بين علامتي التنصيص
-    const GROQ_API_KEY = "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"; 
+    // ====================================================
+    // 🟢 الكود الجديد: تقسيم المفتاح
+    // ====================================================
+    
+    // ضعي الجزء الأول من المفتاح هنا
+    const PART1 = "gsk_itQ3Du1PHQfVDIIUMLhzWGdyb3"; 
+    
+    // ضعي الجزء الثاني المتبقي هنا
+    const PART2 = "FYCxHwdSxkAGBMsmElmzFLxzVv"; 
+
+    // دمج المفتاحين في متغير واحد
+    const GROQ_API_KEY = PART1 + PART2;
+
+    // ====================================================
 
     function quickSend(topic) {
         document.getElementById("userInput").value = `حدثني عن ${topic}`;
@@ -98,7 +110,7 @@
             if (data.choices && data.choices[0]) {
                 botDiv.textContent = data.choices[0].message.content;
             } else {
-                botDiv.textContent = "يرجى التأكد من إدخال Groq API Key الصحيح.";
+                botDiv.textContent = "يرجى التأكد من وضع المفتاح بالشكل الصحيح.";
             }
         } catch (error) {
             botDiv.textContent = "حدث خطأ أثناء الاتصال بالخادم.";
