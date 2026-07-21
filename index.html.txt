@@ -50,7 +50,7 @@
 
 <script>
     // ضعي الـ API Key الخاص بكِ هنا
-    const API_KEY = "YOUR_OPENAI_API_KEY_HERE"; 
+    const API_KEY = "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"; 
 
     function quickSend(topic) {
         document.getElementById("userInput").value = `حدثني عن ${topic}`;
